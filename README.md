@@ -15,7 +15,7 @@ Follow the instructions below to build your own!
 - Arduino Nano (16MHz ATmega328, 5v) or cheap knock-off
 - I2C 128x32 OLED display (SSD1306)
 - I2C real-time clock module (DS3231) with battery
-- Custom PCB to integrate components
+- [Custom PCB](custom-pcb/) to integrate components
 
 ![components](images/components.jpg)
 
@@ -77,9 +77,9 @@ Assembly is now complete!
 1. Download [Arduino IDE](https://www.arduino.cc/en/software).
 
 2. [Install required boards](https://support.arduino.cc/hc/en-us/articles/360016119519-How-to-add-boards-in-the-board-manager):
-   
+
    - `Adafruit AVR Boards` by Adafruit
-   
+
 3. [Install required libraries](https://docs.arduino.cc/software/ide-v1/tutorials/installing-libraries):
    - `Adafruit SSD1306` by Adafruit
    - `Adafruit GFX Library` by Adafruit
@@ -100,7 +100,7 @@ Assembly is now complete!
    - Port: whichever one corresponds to the device you just plugged in
 
    ![arduino-ide-settings](images/arduino-ide-settings.jpg)
-   
+
 8. Click the right-arrow button at the top of the program window to compile the code and upload it to the device.
 
 If everything worked properly up to this point, your device should now be showing either "Connect to set clock" or "Connect to set keys" (depending on the initial RTC setting):
@@ -112,13 +112,15 @@ If everything worked properly up to this point, your device should now be showin
 1. Install [Python 3](https://www.python.org/downloads/).
 
 2. Install required Python libraries (just `pyserial`):
-   * `pip3 install -r requirements.txt`
-
+   
+* `pip3 install -r requirements.txt`
+   
 3. Connect your fully assembled and programmed device to your computer using a USB data cable.
 
 4. Run the Python script:
-   * `python3 setup-device.py`
-
+   
+* `python3 setup-device.py`
+   
 5. Select the USB port corresponding to your device, when prompted.
 
 6. After establishing a serial connection to your device, the script will automatically sync the time from your computer to the RTC.
@@ -128,7 +130,7 @@ If everything worked properly up to this point, your device should now be showin
 7. For first-time setup, choose option 5 to initialize the device memory.
 
 8. Choose option 3 to add a key to your device. First enter a three-character label for the key, then enter the key in the standard Base32 format. The device currently supports one or two keys at a time, and will adjust the display accordingly. Keys are recorded in the Arduino's built-in EEPROM without encryption (fair warning).
-   - [Google Authenticator](https://support.google.com/accounts/answer/1066447): the app should print your key after completing setup, otherwise you can retrieve the code from the first line of your `.google_authenticator` file 
+   - [Google Authenticator](https://support.google.com/accounts/answer/1066447): the app should print your key after completing setup, otherwise you can retrieve the code from the first line of your `.google_authenticator` file
    - [AWS MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html): use the "Show Secret Key" option during setup
 
    ![add-key](images/add-key.jpg)
